@@ -37,6 +37,27 @@ print(list(map(lambda x: (x[0], (9/5) * x[1] + 32), places)))
 # Iteration 5: 5
 # Iteration 6: 8
 
+def hide_the_cache():
+
+    cache = {}
+    
+    def fib(num):
+        if num <= 1:
+            print(f"fib({num}) = {num}")
+            return num
+        elif num in cache:
+            return cache[num]
+        else:
+            print(f"fib({num}) = fib({num-1}) + fib({num-2})")
+            val = fib(num-1) + fib(num-2)
+            cache[num] = val
+            return val
+    return fib
+            
+fib = hide_the_cache()
+
+print(fib(6))
+
 # Here's a function that outputs the fibonacci sequence without using recursion:
 
 def fibonacci(x):
